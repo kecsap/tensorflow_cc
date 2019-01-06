@@ -20,6 +20,7 @@ ExternalProject_Add(
             # TODO This is a patch for 1.12.0.
             COMMAND git checkout master -- tensorflow/tf_version_script.lds
             COMMAND sed -i "s#${OLD_PROTOBUF}#${FIXED_PROTOBUF}#g" tensorflow/contrib/makefile/download_dependencies.sh
+            COMMAND git apply < ${CMAKE_SOURCE_DIR}/../tf_nccl.patch
 
             COMMAND tensorflow/contrib/makefile/download_dependencies.sh
   BUILD_COMMAND ""
